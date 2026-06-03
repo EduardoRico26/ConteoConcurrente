@@ -351,7 +351,7 @@ A continuación se presentan las evidencias de ejecución del programa.
 ---
 # Bibliografía
 
-1. Benavides Navarro, L. D., & Gualtero Martínez, R. H. (2024). *Concurrencia e hilos en Java y Go* [Diapositivas de clase]. Universidad Distrital Francisco José de Caldas.
+1. Benavides Navarro, L. D., & Gualtero Martínez, R. H. (2024). *Concurrencia e hilos en Java y Go* [Diapositivas de clase]. 
 
 2. OpenAI. (2026). *ChatGPT* (versión GPT-5.5) [Modelo de lenguaje]. https://chatgpt.com/ (Se utilizó principalmente como herramienta de apoyo para construir el código en Go) 
 
