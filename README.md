@@ -1,363 +1,370 @@
-# Conteo Concurrente con Hilos en Java y Go
+# Concurrent Counting with Threads in Java and Go
 
-## Información General
+## General Information
 
-**Asignatura:** Arquitecturas de Software (ARSW)
+**Course:** Software Architectures (ARSW)
 
-**Docente:** Rodrigo Humberto Gualtero Martínez
+**Professor:** Rodrigo Humberto Gualtero Martínez
 
-**Estudiante:** Eduardo Rico Duarte
+**Student:** Eduardo Rico Duarte
 
-**Fecha:** 03/06/2026
-
----
-
-## Descripción
-
-Este repositorio contiene el desarrollo de un ejercicio práctico de concurrencia cuyo objetivo es implementar un programa capaz de realizar el conteo de números desde 1 hasta un valor n, distribuyendo el trabajo entre múltiples hilos de ejecución.
-
-El ejercicio fue desarrollado en dos lenguajes de programación:
-
-- Java
-- Go (Golang)
-
-Cada implementación busca aplicar los conceptos fundamentales de concurrencia vistos en clase, permitiendo comprender cómo diferentes hilos o goroutines pueden ejecutar tareas simultáneamente y cómo influye la cantidad de hilos en el desempeño del programa.
+**Date:** 06/03/2026
 
 ---
 
-## Objetivos
+## Description
 
-### Objetivo General
+This repository contains the development of a concurrency exercise whose objective is to implement a program capable of counting numbers from 1 to a given value n, distributing the work among multiple execution threads.
 
-Desarrollar un programa concurrente que realice el conteo desde 1 hasta un número dado utilizando múltiples hilos de ejecución.
+The exercise was developed in two programming languages:
 
-### Objetivos Específicos
+* Java
+* Go (Golang)
 
-- Comprender el funcionamiento de los hilos de ejecución.
-- Aplicar conceptos de concurrencia en Java y Go.
-- Distribuir una tarea entre múltiples hilos.
-- Medir el tiempo de ejecución del programa.
-- Analizar el impacto de la cantidad de hilos sobre el rendimiento.
+Each implementation applies the fundamental concepts of concurrency studied in class, allowing us to understand how different threads or goroutines can execute tasks simultaneously and how the number of threads affects program performance.
 
 ---
 
-# Estructura del Repositorio
+## Objectives
 
-El desarrollo se realizó en el repositorio ConteoConcurrente en GitHub 
+### General Objective
 
-## Ramas Utilizadas
+Develop a concurrent program that performs counting from 1 to a given number using multiple execution threads.
 
-| Rama | Descripción |
-|--------|--------|
-| Taller | Implementación del ejercicio en Java |
-| Taller-go | Implementación del ejercicio en Go |
+### Specific Objectives
 
-
-
----
-
-# Fundamento Teórico
-
-La concurrencia es la capacidad de un sistema para manejar múltiples operaciones o transacciones de manera simultánea.
-
-Su objetivo es aprovechar mejor los recursos computacionales disponibles, permitiendo que varias tareas avancen de manera concurrente.
-
-## Estrategias de Concurrencia
-
-### Memoria Compartida
-
-Permite que múltiples hilos accedan a una misma región de memoria para intercambiar información.
-
-Entre sus ventajas se encuentra una comunicación rápida entre hilos al no requerir intercambio explícito de mensajes.
-
-Sin embargo, requiere mecanismos de sincronización para evitar inconsistencias en los datos, condiciones de carrera y otros problemas asociados al acceso concurrente.
-
-Java implementa principalmente este modelo mediante Threads, monitores, semáforos y otros mecanismos de sincronización.
-
-### Paso de Mensajes
-
-En este modelo cada proceso mantiene su propio espacio de memoria y la comunicación se realiza mediante el envío y recepción de mensajes.
-
-Este enfoque reduce problemas asociados a la memoria compartida y facilita la construcción de sistemas distribuidos y escalables.
-
-Go adopta esta filosofía mediante goroutines y canales (channels), permitiendo una concurrencia más segura y sencilla de implementar.
-
-## Hilos y Goroutines
-
-En Java la concurrencia se implementa mediante objetos de tipo Thread.
-
-Cada hilo representa una unidad independiente de ejecución que puede ejecutarse concurrentemente con otros hilos.
-
-En Go la concurrencia se implementa mediante goroutines.
-
-Las goroutines son más ligeras que los threads tradicionales y permiten crear miles de tareas concurrentes con una menor sobrecarga de recursos.
+* Understand how execution threads work.
+* Apply concurrency concepts in Java and Go.
+* Distribute a task among multiple threads.
+* Measure program execution time.
+* Analyze the impact of the number of threads on performance.
 
 ---
 
-# Desarrollo del Ejercicio
+# Repository Structure
 
-El programa solicita al usuario:
+The development was carried out in the **ConteoConcurrente** GitHub repository.
 
-1. El número máximo a contar.
-2. La cantidad de hilos a utilizar.
+## Branches Used
 
-Posteriormente:
+| Branch      | Description                         |
+| ----------- | ----------------------------------- |
+| Taller    | Java implementation of the exercise |
+| Taller-go | Go implementation of the exercise   |
 
-1. Se divide el rango de números entre los hilos disponibles.
-2. Cada hilo recibe un subconjunto del rango.
-3. Los hilos son ejecutados concurrentemente.
-4. Se mide el tiempo total de ejecución.
-5. Se presenta el tiempo requerido para completar el conteo.
+---
 
+# Theoretical Background
 
+Concurrency is the ability of a system to handle multiple operations or transactions simultaneously.
 
-# Resultados Experimentales
+Its objective is to make better use of available computational resources by allowing several tasks to progress concurrently.
 
-Todas las pruebas fueron realizadas utilizando:
+## Concurrency Strategies
+
+### Shared Memory
+
+Shared memory allows multiple threads to access the same memory region to exchange information.
+
+One of its advantages is fast communication between threads since explicit message passing is not required.
+
+However, synchronization mechanisms are necessary to prevent data inconsistencies, race conditions, and other problems related to concurrent access.
+
+Java mainly implements this model through Threads, monitors, semaphores, and other synchronization mechanisms.
+
+### Message Passing
+
+In this model, each process maintains its own memory space and communication occurs through message exchange.
+
+This approach reduces issues associated with shared memory and facilitates the construction of distributed and scalable systems.
+
+Go adopts this philosophy through goroutines and channels, enabling safer and easier concurrency.
+
+## Threads and Goroutines
+
+In Java, concurrency is implemented through Thread objects.
+
+Each thread represents an independent unit of execution that can run concurrently with other threads.
+
+In Go, concurrency is implemented through goroutines.
+
+Goroutines are lighter than traditional threads and allow thousands of concurrent tasks to be created with lower resource overhead.
+
+---
+
+# Exercise Development
+
+The program asks the user for:
+
+1. The maximum number to count to.
+2. The number of threads to use.
+
+The program then:
+
+1. Divides the range of numbers among the available threads.
+2. Assigns each thread a subset of the range.
+3. Executes all threads concurrently.
+4. Measures the total execution time.
+5. Displays the time required to complete the counting process.
+
+---
+
+# Experimental Results
+
+All tests were performed using:
 
 n = 500000
 
+---
+
+## Java Results
+
+| Number of Threads | Time (ms) |
+| ----------------- | --------- |
+| 10                | 27128     |
+| 50                | 27373     |
+| 60                | 27234     |
+| 100               | 27355     |
+| 200               | 27507     |
+| 300               | 28174     |
+| 400               | 27557     |
+| 1000              | 27321     |
+| 2000              | 28218     |
+| 5000              | 28452     |
+| 6000              | 28159     |
+| 7000              | 28365     |
+| 9000              | 28760     |
+| 10000             | 29123     |
 
 ---
 
-## Resultados Java
+## Go Results
 
-| Número de Hilos | Tiempo (ms) |
-|----------------|------------|
-| 10 | 27128 |
-| 50 | 27373 |
-| 60 | 27234 |
-| 100 | 27355 |
-| 200 | 27507 |
-| 300 | 28174 |
-| 400 | 27557 |
-| 1000 | 27321 |
-| 2000 | 28218 |
-| 5000 | 28452 |
-| 6000 | 28159 |
-| 7000 | 28365 |
-| 9000 | 28760 |
-| 10000 | 29123 |
-
----
-
-## Resultados Go
-
-| Número de Hilos | Tiempo (ms) |
-|----------------|------------|
-| 50 | 16188 |
-| 60 | 13395 |
-| 100 | 10409 |
-| 300 | 10035 |
-| 500 | 9465 |
-| 600 | 10003 |
-| 900 | 10125 |
-| 1000 | 9654 |
-| 1200 | 10795 |
-| 3000 | 12423 |
-| 5000 | 9553 |
-| 6000 | 14069 |
-| 7000 | 14563 |
-| 9000 | 17098 |
-| 10000 | 10108 |
-| 12000 | 21083 |
+| Number of Threads | Time (ms) |
+| ----------------- | --------- |
+| 50                | 16188     |
+| 60                | 13395     |
+| 100               | 10409     |
+| 300               | 10035     |
+| 500               | 9465      |
+| 600               | 10003     |
+| 900               | 10125     |
+| 1000              | 9654      |
+| 1200              | 10795     |
+| 3000              | 12423     |
+| 5000              | 9553      |
+| 6000              | 14069     |
+| 7000              | 14563     |
+| 9000              | 17098     |
+| 10000             | 10108     |
+| 12000             | 21083     |
 
 ---
 
-# Análisis de Resultados
+# Results Analysis
 
-A continuación se presentan las gráficas obtenidas a partir de los resultados experimentales.
+The following graphs present the results obtained during the experimental phase.
 
 ## Java
 
-![Gráfica Java](Imagenes/graf1.png)
-
+![Java Graph](Imagenes/graf1.png)
 
 ---
 
 ## Go
 
-![Gráfica Go](Imagenes/graf2.png)
-
-
----
-
-## Discusión de Resultados
-
-Inicialmente podría suponerse que aumentar la cantidad de hilos reduciría continuamente el tiempo de ejecución debido a que el trabajo se distribuye entre más unidades de procesamiento.
-
-Sin embargo, los resultados experimentales muestran que esta relación no es lineal.
-
-Aunque en algunos casos el tiempo disminuye al incrementar la cantidad de hilos, después de cierto punto la tendencia general es un aumento en el tiempo total de ejecución.
-
-### Coste de Creación de Hilos
-
-Cada hilo requiere recursos del sistema para ser creado y administrado.
-
-Cuando se crean miles de hilos, el costo de creación y administración puede superar el beneficio obtenido por la división del trabajo.
-
-### Cambios de Contexto
-
-El procesador dispone de un número limitado de núcleos físicos.
-
-Cuando la cantidad de hilos excede ampliamente el número de núcleos disponibles, el sistema operativo debe alternar constantemente entre ellos.
-
-Este proceso se conoce como cambio de contexto (Context Switching) y genera una sobrecarga adicional.
-
-### Planificación del Sistema Operativo
-
-El scheduler del sistema operativo debe gestionar la ejecución de todos los hilos activos.
-
-A medida que aumenta la cantidad de hilos, también aumenta el trabajo del scheduler, reduciendo la eficiencia general del sistema.
-
-### Operaciones de Entrada y Salida
-
-La impresión de información en consola es una operación relativamente lenta.
-
-Por esta razón, parte importante del tiempo medido corresponde a operaciones de entrada y salida y no únicamente al proceso de conteo.
+![Go Graph](Imagenes/graf2.png)
 
 ---
 
-## Relación con la Teoría Vista en Clase
+## Discussion of Results
 
-Los resultados obtenidos permiten observar uno de los conceptos fundamentales de la concurrencia: la existencia de una cantidad óptima de hilos para una tarea determinada.
+At first glance, one might assume that increasing the number of threads would continuously reduce execution time because the workload is distributed among more processing units.
 
-Aunque es posible crear miles de hilos, esto no implica necesariamente una mejora en el rendimiento.
+However, the experimental results show that this relationship is not linear.
 
-Después de cierto punto, la sobrecarga asociada a la administración de hilos, cambios de contexto y planificación comienza a superar los beneficios de la paralelización.
+Although execution time decreases in some cases when the number of threads increases, after a certain point the general trend is an increase in total execution time.
 
-Este comportamiento explica por qué los tiempos observados no disminuyen indefinidamente y, en muchos casos, terminan aumentando.
+### Thread Creation Cost
 
-Los resultados también muestran una diferencia importante entre Java y Go.
+Each thread requires system resources to be created and managed.
 
-Las goroutines de Go son considerablemente más ligeras que los threads tradicionales de Java, permitiendo manejar una gran cantidad de tareas concurrentes con una menor sobrecarga.
+When thousands of threads are created, the cost of creation and management can exceed the benefits gained from dividing the workload.
 
-Esto coincide con los beneficios descritos en la teoría revisada durante el curso.
+### Context Switching
 
----
+The processor has a limited number of physical cores.
 
-## Comparación General
+When the number of threads greatly exceeds the number of available cores, the operating system must constantly switch between them.
 
-Los resultados obtenidos muestran que Go presentó tiempos de ejecución inferiores a Java en la mayoría de las pruebas realizadas.
+This process is known as **context switching** and introduces additional overhead.
 
-Esto puede atribuirse al diseño de las goroutines y al modelo de concurrencia implementado por el runtime de Go.
+### Operating System Scheduling
 
-Sin embargo, ambos lenguajes evidencian el mismo comportamiento general: después de cierto número de hilos la sobrecarga de administración comienza a afectar negativamente el rendimiento.
+The operating system scheduler must manage all active threads.
 
----
+As the number of threads increases, the scheduler's workload also increases, reducing overall efficiency.
 
-# Conclusiones
+### Input and Output Operations
 
-- Fue posible implementar exitosamente un programa concurrente para realizar conteos utilizando múltiples hilos de ejecución.
-- El ejercicio permitió comprender conceptos fundamentales de concurrencia como creación de hilos, sincronización y ejecución concurrente.
-- Los resultados demostraron que aumentar la cantidad de hilos no garantiza una reducción del tiempo de ejecución.
-- La existencia de cambios de contexto y sobrecarga administrativa puede generar tiempos mayores cuando se utilizan demasiados hilos.
-- Go presentó mejores tiempos de ejecución debido a la eficiencia de las goroutines y su modelo de concurrencia.
-- La concurrencia constituye una herramienta poderosa para mejorar el aprovechamiento de los recursos computacionales, pero requiere un uso adecuado para obtener beneficios reales.
+Printing information to the console is a relatively slow operation.
+
+For this reason, a significant portion of the measured execution time corresponds to input/output operations rather than the counting process itself.
 
 ---
 
-# Anexos
+## Relationship with the Theory Studied in Class
 
-A continuación se presentan las evidencias de ejecución del programa.
+The obtained results illustrate one of the fundamental concepts of concurrency: the existence of an optimal number of threads for a given task.
 
-## Resultados Java
+Although it is possible to create thousands of threads, this does not necessarily improve performance.
 
-## Evidencia 1
+Beyond a certain point, the overhead associated with thread management, context switching, and scheduling begins to outweigh the benefits of parallelization.
 
-![Evidencia 1](Imagenes/Ev1.png)
+This behavior explains why execution times do not decrease indefinitely and, in many cases, begin to increase.
 
----
+The results also highlight an important difference between Java and Go.
 
-## Evidencia 2
+Go's goroutines are considerably lighter than traditional Java threads, allowing a large number of concurrent tasks to be handled with lower overhead.
 
-![Evidencia 2](Imagenes/Ev2.png)
-
----
-
-## Evidencia 3
-
-![Evidencia 3](Imagenes/Ev3.png)
+This behavior is consistent with the advantages described in the theoretical material covered during the course.
 
 ---
 
-## Evidencia 4
+## General Comparison
 
-![Evidencia 4](Imagenes/Ev4.png)
+The results show that Go achieved lower execution times than Java in most of the performed tests.
+
+This can be attributed to the design of goroutines and the concurrency model implemented by the Go runtime.
+
+However, both languages exhibit the same general behavior: after a certain number of threads, management overhead begins to negatively impact performance.
+
+---
+
+# Conclusions
+
+* It was possible to successfully implement a concurrent program that performs counting using multiple execution threads.
+* The exercise allowed us to understand fundamental concurrency concepts such as thread creation, synchronization, and concurrent execution.
+* The results demonstrated that increasing the number of threads does not guarantee a reduction in execution time.
+* Context switching and thread management overhead can lead to higher execution times when too many threads are used.
+* Go achieved better execution times due to the efficiency of goroutines and its concurrency model.
+* Concurrency is a powerful tool for improving computational resource utilization, but it must be applied appropriately to obtain real performance benefits.
 
 ---
 
-## Evidencia 5
+# Appendices
 
-![Evidencia 5](Imagenes/Ev5.png)
+The following section contains evidence of the program executions.
 
----
-## Evidencia 6
+## Java Results
 
-![Evidencia 6](Imagenes/Ev6.png)
+### Evidence 1
 
----
-## Resultados Go
-
-## Evidencia 7
-
-![Evidencia 7](Imagenes/Ev7.png)
+![Evidence 1](Imagenes/Ev1.png)
 
 ---
-## Evidencia 8
 
-![Evidencia 8](Imagenes/Ev8.png)
+### Evidence 2
 
----
-## Evidencia 9
-
-![Evidencia 9](Imagenes/Ev9.png)
+![Evidence 2](Imagenes/Ev2.png)
 
 ---
-## Evidencia 10
 
-![Evidencia 10](Imagenes/Ev10.png)
+### Evidence 3
 
----
-## Evidencia 11
-
-![Evidencia 11](Imagenes/Ev11.png)
+![Evidence 3](Imagenes/Ev3.png)
 
 ---
-## Evidencia 12
 
-![Evidencia 12](Imagenes/Ev12.png)
+### Evidence 4
 
----
-## Evidencia 13
-
-![Evidencia 13](Imagenes/Ev13.png)
+![Evidence 4](Imagenes/Ev4.png)
 
 ---
-## Evidencia 14
 
-![Evidencia 14](Imagenes/Ev14.png)
+### Evidence 5
 
----
-## Evidencia 15
-
-![Evidencia 15](Imagenes/Ev15.png)
+![Evidence 5](Imagenes/Ev5.png)
 
 ---
-## Evidencia 16
 
-![Evidencia 16](Imagenes/Ev16.png)
+### Evidence 6
+
+![Evidence 6](Imagenes/Ev6.png)
 
 ---
-# Bibliografía
 
-1. Benavides Navarro, L. D., & Gualtero Martínez, R. H. (2024). *Concurrencia e hilos en Java y Go* [Diapositivas de clase]. 
+## Go Results
 
-2. OpenAI. (2026). *ChatGPT* (versión GPT-5.5) [Modelo de lenguaje]. https://chatgpt.com/ (Se utilizó principalmente como herramienta de apoyo para construir el código en Go) 
+### Evidence 7
 
-3. Oracle. (s.f.). *The Java™ Tutorials: Concurrency*. Oracle Corporation. Recuperado el 3 de junio de 2026, de https://docs.oracle.com/javase/tutorial/essential/concurrency/
+![Evidence 7](Imagenes/Ev7.png)
 
-4. The Go Authors. (s.f.). *Effective Go: Concurrency*. Google. Recuperado el 3 de junio de 2026, de https://go.dev/doc/effective_go
+---
+
+### Evidence 8
+
+![Evidence 8](Imagenes/Ev8.png)
+
+---
+
+### Evidence 9
+
+![Evidence 9](Imagenes/Ev9.png)
+
+---
+
+### Evidence 10
+
+![Evidence 10](Imagenes/Ev10.png)
+
+---
+
+### Evidence 11
+
+![Evidence 11](Imagenes/Ev11.png)
+
+---
+
+### Evidence 12
+
+![Evidence 12](Imagenes/Ev12.png)
+
+---
+
+### Evidence 13
+
+![Evidence 13](Imagenes/Ev13.png)
+
+---
+
+### Evidence 14
+
+![Evidence 14](Imagenes/Ev14.png)
+
+---
+
+### Evidence 15
+
+![Evidence 15](Imagenes/Ev15.png)
+
+---
+
+### Evidence 16
+
+![Evidence 16](Imagenes/Ev16.png)
+
+---
+
+# References
+
+1. Benavides Navarro, L. D., & Gualtero Martínez, R. H. (2024). *Concurrency and Threads in Java and Go* [Course slides].
+
+2. OpenAI. (2026). *ChatGPT* (GPT-5.5 version) [Large Language Model]. https://chatgpt.com/ (Used primarily as a support tool for developing the Go implementation.)
+
+3. Oracle. (n.d.). *The Java™ Tutorials: Concurrency*. Oracle Corporation. Retrieved June 3, 2026, from https://docs.oracle.com/javase/tutorial/essential/concurrency/
+
+4. The Go Authors. (n.d.). *Effective Go: Concurrency*. Google. Retrieved June 3, 2026, from https://go.dev/doc/effective_go
 
 5. Silberschatz, A., Galvin, P. B., & Gagne, G. (2018). *Operating System Concepts* (10th ed.). John Wiley & Sons.
 
